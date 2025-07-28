@@ -90,14 +90,11 @@ const Products = () => {
                             <span className="inline-block text-xs font-medium bg-blue-100 text-blue-800 px-2 py-1 rounded-full mb-2">
                                 {product.category}
                             </span>
-
                             <h3 className="font-semibold text-gray-800 mb-2 line-clamp-2 h-12">{product.title}</h3>
-
                             <div className="flex items-center mb-2">
                                 {renderStars(product.rating.rate)}
                                 <span className="text-sm text-gray-600 ml-2">({product.rating.count})</span>
                             </div>
-
                             <div className="flex items-center justify-between">
                                 <span className="text-xl font-bold text-green-600">{formatPrice(product.price)}</span>
                                 <button className="bg-blue-600 text-white p-2 rounded-full hover:bg-blue-700 transition-colors duration-300">
@@ -121,8 +118,12 @@ const Products = () => {
                 ))}
             </div>
             {isModalOpen && selectedProduct && (
-                <div className="fixed inset-0 backdrop-blur-sm bg-white/30 flex items-center justify-center p-4 z-50">
-                    <div className="bg-white rounded-lg max-w-4xl w-full max-h-[90vh] overflow-y-auto animate-modal">
+                <div
+                    className="fixed inset-0 backdrop-blur-sm bg-white/30 flex items-center justify-center p-4 z-50 animate-fadeIn"
+                    onClick={closeModal}>
+                    <div
+                        className="bg-white rounded-lg max-w-4xl w-full max-h-[90vh] overflow-y-auto animate-modal"
+                        onClick={(e) => e.stopPropagation()}>
                         <div className="flex justify-between items-start p-6 border-b">
                             <h2 className="text-2xl font-bold text-gray-800 pr-8">{selectedProduct.title}</h2>
                             <button onClick={closeModal} className="text-gray-500 hover:text-gray-700 text-2xl">×</button>
@@ -133,8 +134,7 @@ const Products = () => {
                                     <img
                                         src={selectedProduct.image}
                                         alt={selectedProduct.title}
-                                        className="max-w-full h-auto max-h-96 object-contain"
-                                    />
+                                        className="max-w-full h-auto max-h-96 object-contain" />
                                 </div>
                                 <div className="space-y-4">
                                     <div>
@@ -167,9 +167,6 @@ const Products = () => {
                     </div>
                 </div>
             )}
-
-
-
         </div>
     )
 }
