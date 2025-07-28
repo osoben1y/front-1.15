@@ -86,7 +86,6 @@ const Products = () => {
                                 </span>
                             </div>
                         </div>
-
                         <div className="p-4">
                             <span className="inline-block text-xs font-medium bg-blue-100 text-blue-800 px-2 py-1 rounded-full mb-2">
                                 {product.category}
