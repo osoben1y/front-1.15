@@ -10,6 +10,21 @@
   }
 }
 
+@keyframes hideModal {
+  0% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+  }
+}
+
 .animate-modal {
-  animation: showModal 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  animation: showModal 0.3s ease-in-out forwards;
+}
+
+.animate-modal-leave {
+  animation: hideModal 0.3s ease-in-out forwards;
 }
