@@ -120,70 +120,56 @@ const Products = () => {
 
             {isModalOpen && selectedProduct && (
                 <div
-                    className="fixed inset-0 bg-black bg-opacity-40 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+                    className="fixed inset-0 backdrop-blur-sm bg-white/30 flex items-center justify-center p-4 z-50 animate-fadeIn"
                     onClick={closeModal}>
                     <div
-                        className={`bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-100 rounded-2xl shadow-xl max-w-4xl w-full max-h-[90vh] overflow-y-auto transform transition-all duration-300 ease-in-out ${isModalClosing ? 'animate-modal-leave' : 'animate-modal'
-                            }`}
+                        className={`bg-white rounded-lg max-w-4xl w-full max-h-[90vh] overflow-y-auto transition-all duration-300 ease-in-out ${
+                            isModalClosing ? "animate-modal-leave" : "animate-modal"
+                        }`}
                         onClick={(e) => e.stopPropagation()}>
-
-                        <div className="flex justify-between items-start p-6 border-b border-gray-200 dark:border-gray-700">
-                            <h2 className="text-2xl font-bold pr-8">{selectedProduct.title}</h2>
-                            <button onClick={closeModal} className="text-gray-500 dark:text-gray-400 hover:text-red-500 text-3xl leading-none">
-                                &times;
-                            </button>
+                        <div className="flex justify-between items-start p-6 border-b">
+                            <h2 className="text-2xl font-bold text-gray-800 pr-8">{selectedProduct.title}</h2>
+                            <button onClick={closeModal} className="text-gray-500 hover:text-gray-700 text-2xl">×</button>
                         </div>
-
-                        <div className="p-6 grid md:grid-cols-2 gap-8">
-                            <div className="flex items-center justify-center">
-                                <div className="p-4 bg-gray-100 dark:bg-gray-800 rounded-xl">
+                        <div className="p-6">
+                            <div className="grid md:grid-cols-2 gap-8">
+                                <div className="flex justify-center">
                                     <img
                                         src={selectedProduct.image}
                                         alt={selectedProduct.title}
-                                        className="max-w-full h-auto max-h-96 object-contain"
-                                    />
+                                        className="max-w-full h-auto max-h-96 object-contain" />
                                 </div>
-                            </div>
-
-                            <div className="space-y-4">
-                                <div>
-                                    <span className="inline-block text-xs font-semibold bg-indigo-100 text-indigo-800 dark:bg-indigo-900 dark:text-indigo-300 px-3 py-1 rounded-full uppercase tracking-wide">
-                                        {selectedProduct.category}
-                                    </span>
-                                </div>
-
-                                <div className="flex items-center space-x-2">
-                                    {renderStars(selectedProduct.rating.rate)}
-                                    <span className="text-sm text-gray-500 dark:text-gray-400 font-medium">
-                                        {selectedProduct.rating.rate} ({selectedProduct.rating.count} ta sharh)
-                                    </span>
-                                </div>
-
-                                <div className="text-3xl font-bold text-green-600 dark:text-green-400">
-                                    {formatPrice(selectedProduct.price)}
-                                </div>
-
-                                <div>
-                                    <h3 className="text-lg font-semibold mb-1">Tavsif:</h3>
-                                    <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
-                                        {selectedProduct.description}
-                                    </p>
-                                </div>
-
-                                <div className="flex flex-col sm:flex-row gap-4 pt-6">
-                                    <button className="flex-1 bg-blue-600 hover:bg-blue-700 text-white py-3 px-6 rounded-xl font-semibold transition-colors duration-300">
-                                        🛒 Savatga qo'shish
-                                    </button>
-                                    <button className="flex-1 border border-gray-300 dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-800 dark:text-gray-100 py-3 px-6 rounded-xl font-semibold transition-colors duration-300">
-                                        💳 Hozir sotib olish
-                                    </button>
+                                <div className="space-y-4">
+                                    <div>
+                                        <span className="inline-block bg-blue-50 text-blue-700 border border-blue-200 px-3 py-1 rounded-full mb-4">
+                                            {selectedProduct.category}
+                                        </span>
+                                        <div className="flex items-center gap-2 mb-4">
+                                            {renderStars(selectedProduct.rating.rate)}
+                                            <span className="text-sm text-gray-600 font-medium">
+                                                {selectedProduct.rating.rate} ({selectedProduct.rating.count} ta sharh)
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div className="text-3xl font-bold text-green-600">{formatPrice(selectedProduct.price)}</div>
+                                    <div>
+                                        <h3 className="font-semibold text-gray-800 mb-2">Tavsif:</h3>
+                                        <p className="text-gray-600 leading-relaxed">{selectedProduct.description}</p>
+                                    </div>
+                                    <div className="flex gap-4 pt-4">
+                                        <button className="flex-1 bg-blue-600 text-white py-3 px-6 rounded-lg hover:bg-blue-700 transition-colors duration-300 font-semibold">
+                                            🛒 Savatga qo'shish
+                                        </button>
+                                        <button className="flex-1 border-2 border-gray-300 text-gray-800 py-3 px-6 rounded-lg hover:bg-gray-100 transition-colors duration-300 font-semibold">
+                                            Hozir sotib olish
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             )}
-
         </div>
     )
 }
